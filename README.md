@@ -26,8 +26,8 @@ El proyecto está pensado para uso local y cuenta con manejo de procesos asíncr
 1. Clonar el repositorio:
 
    ```bash
-   git clone <URL_DEL_REPO>
-   cd <NOMBRE_DEL_PROYECTO>
+   git clone git@github.com:NaimGrimaldo/invoices-reporter.git
+   cd invoice-reporter
    ```
 
 2. Instalar dependencias:
