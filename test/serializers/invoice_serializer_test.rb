@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # test/serializers/invoice_serializer_test.rb
 require 'test_helper'
 
