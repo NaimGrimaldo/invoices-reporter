@@ -5,6 +5,6 @@ class ReportMailer < ApplicationMailer
 
   def daily_sales_report(top_sales)
     @top_sales = top_sales
-    mail(to: 'ariana.jp@hotmail.com', subject: 'Daily sales report')
+    mail(to: ENV.fetch('EMAIL_TO_SEND_DAILY_REPORT', nil), subject: 'Daily sales report')
   end
 end
