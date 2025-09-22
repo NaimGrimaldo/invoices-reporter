@@ -1,0 +1,64 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
+  timeout: 5000
+
+development:
+  primary:
+    <<: *default
+    database: reporter_dev
+    username: <%= ENV["DB_USER_PRIMARY"] %>
+    password: <%= ENV["DB_PASSWORD_PRIMARY"] %>
+    host: <%= ENV["DB_HOST_PRIMARY"] %>
+    port: <%= ENV["DB_PORT_PRIMARY"] %>
+
+  secondary:
+    <<: *default
+    database: <%= ENV["DB_NAME_SECONDARY"] %>
+    username: <%= ENV["DB_USER_SECONDARY"] %>
+    password: <%= ENV["DB_PASSWORD_SECONDARY"] %>
+    host: <%= ENV["DB_HOST_SECONDARY"] %>
+    port: <%= ENV["DB_PORT_SECONDARY"] %>
+    pool: 5
+    replica: true
+    # optional: prevents writing accidentally
+    writing: false
+
+test:
+  primary:
+    <<: *default
+    database: reporter_test
+    username: <%= ENV["DB_USER_PRIMARY"] %>
+    password: <%= ENV["DB_PASSWORD_PRIMARY"] %>
+    host: <%= ENV["DB_HOST_PRIMARY"] %>
+    port: <%= ENV["DB_PORT_PRIMARY"] %>
+
+  secondary:
+    <<: *default
+    database: <%= ENV["DB_NAME_SECONDARY"] %>
+    username: <%= ENV["DB_USER_SECONDARY"] %>
+    password: <%= ENV["DB_PASSWORD_SECONDARY"] %>
+    host: <%= ENV["DB_HOST_SECONDARY"] %>
+    port: <%= ENV["DB_PORT_SECONDARY"] %>
+    replica: true
+    writing: false
+
+production:
+  primary:
+    <<: *default
+    database: reporter_production
+    username: <%= ENV["DB_USER_PRIMARY"] %>
+    password: <%= ENV["DB_PASSWORD_PRIMARY"] %>
+    host: <%= ENV["DB_HOST_PRIMARY"] %>
+    port: <%= ENV["DB_PORT_PRIMARY"] %>
+
+  secondary:
+    <<: *default
+    database: <%= ENV["DB_NAME_SECONDARY"] %>
+    username: <%= ENV["DB_USER_SECONDARY"] %>
+    password: <%= ENV["DB_PASSWORD_SECONDARY"] %>
+    host: <%= ENV["DB_HOST_SECONDARY"] %>
+    port: <%= ENV["DB_PORT_SECONDARY"] %>
+    replica: true
+    writing: false

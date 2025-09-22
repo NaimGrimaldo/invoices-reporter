@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body style="font-family: Arial, sans-serif; background-color: #f8f9fa; padding: 20px;">
+    <h2 style="text-align: center; color: #333;">
+      Top 10 de ventas
+    </h2>
+
+    <table style="margin: 0 auto; border-collapse: collapse; width: 80%; max-width: 600px; text-align: center;">
+      <thead>
+        <tr style="background-color: #007bff; color: #fff;">
+          <th style="padding: 10px; border: 1px solid #ddd;">Fecha</th>
+          <th style="padding: 10px; border: 1px solid #ddd;">Total de Ventas</th>
+          <th style="padding: 10px; border: 1px solid #ddd;"># Facturas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @top_sales.each do |sale| %>
+          <tr style="background-color: #fff;">
+            <td style="padding: 10px; border: 1px solid #ddd;"><%= sale["sale_date"] %></td>
+            <td style="padding: 10px; border: 1px solid #ddd;"><%= number_to_currency(sale["total"]) %></td>
+            <td style="padding: 10px; border: 1px solid #ddd;"><%= sale["invoices_count"] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </body>
+</html>
