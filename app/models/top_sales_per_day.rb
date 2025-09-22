@@ -25,7 +25,7 @@ class TopSalesPerDay < ContalinkRecord
 
     def where_clause(start_date: nil, end_date: nil)
       end_date ||= Date.yesterday
-      conditions = ['active = TRUE', "status = 'Vigente'"]
+      conditions = ['active = TRUE', "status IN ('Vigente', 'Pagado'"]
       conditions << "invoice_date >= '#{start_date}'" if start_date
       conditions << "invoice_date <= '#{end_date}'" if end_date
       conditions.join(' AND ')
