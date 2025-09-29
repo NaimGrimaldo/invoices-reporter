@@ -19,7 +19,7 @@ module Api
       def cache_key
         [
           'invoices/index',
-          ransack_params.to_unsafe_h.to_param
+          params.to_unsafe_h.to_param
         ].join('/')
       end
     end
